@@ -11,7 +11,6 @@
 #define MMMC_H
 
 #include <stdint.h>
-#include <stdlib.h>
 
 typedef enum { Ok, Error } Result;
 

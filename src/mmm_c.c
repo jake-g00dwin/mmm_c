@@ -1,5 +1,7 @@
 #include "mmm_c.h"
 #include <alloca.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 U16_DMAT DU16_NewZeros(uint16_t rows, uint16_t cols) {
   U16_DMAT mat;
