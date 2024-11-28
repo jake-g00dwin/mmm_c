@@ -53,7 +53,6 @@ if (UNIT_TESTING)
     
     include_directories(
         ${CPPUTEST_INCLUDE_DIRS}
-        /usr/include/c++/11/
         ./inc
         ./mocks
         )
