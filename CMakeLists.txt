@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 # Use the fancy version substitution
-project(cmake-cpputest-template
+project(mmm_c
     VERSION 1.0
     DESCRIPTION "template for cmake + cpputest"
     LANGUAGES   C CXX
