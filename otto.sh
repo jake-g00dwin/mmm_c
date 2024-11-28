@@ -192,7 +192,7 @@ run_c_tests () {
     format_source_code 
     clear_cmake_cache
     cmake -DUNIT_TESTING=ON  -DCMAKE_VERBOSE_MAKEFILE=${CMAKE_VERBOSE} ../
-    make AllTests && ./tests/AllTests
+    make AllTests && ./tests/AllTests -v -c
 }
 
 print_menu () {
