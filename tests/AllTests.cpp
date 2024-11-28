@@ -3,6 +3,7 @@
 
 //ImportTestGroups
 IMPORT_TEST_GROUP(simple_test);
+IMPORT_TEST_GROUP(mmm_c_test);
 
 //START: main
 int main(int argc, char** argv)

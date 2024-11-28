@@ -2,6 +2,7 @@ project(Tests)
 
 # TEST_DIRS 
 add_subdirectory(simple_test)
+add_subdirectory(mmm_c_test)
 
 # TEST_RUNNER
 add_executable(AllTests
@@ -13,4 +14,5 @@ target_link_libraries(AllTests
     ${CPPUTEST_LIBRARIES}/libCppUTestExt.a
     # TEST_LINKS
     simple_test
+    mmm_c_test
 )
