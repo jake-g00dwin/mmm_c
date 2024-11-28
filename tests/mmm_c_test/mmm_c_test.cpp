@@ -1,12 +1,11 @@
 #include "CppUTest/TestHarness.h"
 
-extern C 
+extern "C" 
 {
-#include "mmm_c.h" 
+    #include "mmm_c.h" 
 }
 
-
-TEST_GROUP(simple_test)
+TEST_GROUP(mmm_c_test)
 {
     void setup()
     {
@@ -18,7 +17,7 @@ TEST_GROUP(simple_test)
     }
 };
 
-TEST(simple_test, passing_test)
+TEST(mmm_c_test, passing_test)
 {
     CHECK_TRUE(1);
 }
