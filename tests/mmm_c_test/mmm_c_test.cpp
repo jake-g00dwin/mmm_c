@@ -164,3 +164,29 @@ TEST(mmm_c_test, DU16_IndexingSquareMatrixWorks)
     DU16_FreeMatrix(&mat);
 }
 
+TEST(mmm_c_test, DU16_MultiplyBySingleValueFailsOnUnallocated)
+{
+    U16_DMAT mat = DU16_New(8, 8);
+
+    CHECK_EQUAL(Error, DU16_MultiplyByNum(&mat, 2));
+}
+
+TEST(mmm_c_test, DU16_MultiplyBySingleValueWorks)
+{
+    U16_DMAT mat = DU16_New(8, 8);
+    CHECK_EQUAL(Ok, DU16_AllocateMemory(&mat));
+
+    for(int i = 0; i < 64; i++){
+        mat.cells[i] = i;
+    }
+
+    if(DU16_MultiplyByNum(&mat, 2) == Error) {
+        FAIL("Single multiplication returned error!");
+    }
+
+    for(uint_fast16_t i = 0; i < 64; i++){
+        CHECK_EQUAL(i * 2, mat.cells[i]); 
+    }
+
+    DU16_FreeMatrix(&mat);
+}
