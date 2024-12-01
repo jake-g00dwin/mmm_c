@@ -73,4 +73,15 @@ Result DU16_MultiplyByNum(U16_DMAT *mat, uint16_t value) {
   return Ok;
 }
 
+// Things to keep in mind:
+// 1. Columns of 1st matrix must equal number of rows of second matrix.
+// 2. the result will have:
+//   - same number of rows as 1st matrix.
+//   - same number of columns as 2nd matrix.
+
 Result DU16_MultiplyInPlace(U16_DMAT *mata, U16_DMAT *matb) { return Ok; }
+
+U16_DMAT DU16_MultiplyMatricies(U16_DMAT *mata, U16_DMAT *matb) {
+  U16_DMAT mat_result = DU16_New(0, 0);
+  return mat_result;
+}
