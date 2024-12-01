@@ -47,3 +47,17 @@ Result DU16_SetAllTo(U16_DMAT *mat, uint16_t value) {
 
   return Ok;
 }
+
+uint_fast16_t *DU16_CellIndex(U16_DMAT *mat, unsigned int row,
+                              unsigned int col) {
+  uint_fast16_t *ptr = NULL;
+
+  if (row >= mat->rows || col >= mat->cols) {
+    return ptr;
+  }
+
+  unsigned int index = (col * mat->rows) + row;
+  ptr = &mat->cells[index];
+
+  return ptr;
+}
