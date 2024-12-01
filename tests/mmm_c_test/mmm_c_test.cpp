@@ -112,17 +112,19 @@ TEST(mmm_c_test, DU16_FreeReturnsErrorOnMisMatch)
     CHECK_TRUE(mat.is_allocated == false);
 }
 
-TEST(mmm_c_test, DU16_NewZerosIsAllZeros)
+TEST(mmm_c_test, DU16_SetAllToValuesSetsValues)
 {
-    U16_DMAT mat = DU16_NewZeros(10, 10);
-    if(!mat.is_allocated){
-        FAIL_TEST("Matrix not allocated!");
+    U16_DMAT mat = DU16_New(8, 8);
+    CHECK_EQUAL(Ok, DU16_AllocateMemory(&mat));
+    
+    if(DU16_SetAllTo(&mat, 5) != Ok){
+        FAIL_TEST("Expected allocated matrix.");
     }
-    //CHECK_TRUE(mat.cols != NULL);
 
-    /*
-    for(uint16_t i = 0; i < (mat.cols * mat.rows); i++) {
-        CHECK_TRUE(0 == mat.cols[i]); 
+    for(int i = 0; i < (mat.cols * mat.rows); i++){
+        CHECK_EQUAL(5, mat.cells[i]);
     }
-    */
+
+    DU16_FreeMatrix(&mat);
 }
+
