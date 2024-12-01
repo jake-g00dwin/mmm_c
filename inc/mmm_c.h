@@ -10,7 +10,9 @@
 #ifndef MMMC_H
 #define MMMC_H
 
-#include <stdint.h>
+#include <inttypes.h>
+#include <stdbool.h>
+
 
 typedef enum { Ok, Error } Result;
 
@@ -19,9 +21,10 @@ typedef enum { Ok, Error } Result;
  *
  */
 typedef struct {
-  uint16_t rows;
-  uint16_t cols;
-  uint16_t *cells;
+    uint_fast16_t rows;
+    uint_fast16_t cols;
+    uint_fast16_t *cells;
+    bool is_allocated;
 } U16_DMAT;
 
 /**
@@ -29,6 +32,7 @@ typedef struct {
  *
  */
 
+U16_DMAT DU16_New(uint16_t rows, uint16_t cols);
 U16_DMAT DU16_NewZeros(uint16_t rows, uint16_t cols);
 U16_DMAT DU16_NewOnes(uint16_t rows, uint16_t cols);
 U16_DMAT DU16_NewIdentity(uint16_t rows, uint16_t cols);
