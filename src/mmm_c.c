@@ -61,3 +61,16 @@ uint_fast16_t *DU16_CellIndex(U16_DMAT *mat, unsigned int row,
 
   return ptr;
 }
+
+Result DU16_MultiplyByNum(U16_DMAT *mat, uint16_t value) {
+  if ((mat->cells == NULL) || !mat->is_allocated) {
+    return Error;
+  }
+
+  for (unsigned int i = 0; i < (mat->cols * mat->rows); i++) {
+    mat->cells[i] *= value;
+  }
+  return Ok;
+}
+
+Result DU16_MultiplyInPlace(U16_DMAT *mata, U16_DMAT *matb) { return Ok; }
