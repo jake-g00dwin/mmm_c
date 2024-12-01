@@ -29,6 +29,10 @@ single step.
 This avoids dealing with having multiple allocation function calls for arrays.
 Another benefit is it simplifies freeing the memory after use.
 
+## Applicaitons
+
+**TODO:** Add list of project links where used.
+
 ## Instructions
 
 
