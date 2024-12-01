@@ -147,9 +147,19 @@ TEST(mmm_c_test, DU16_IndexingSquareMatrixWorks)
    
     DU16_SetAllTo(&mat, 0);
 
-    mat.cells[0] = 5;
-     
-    CHECK_TRUE(*DU16_CellIndex(&mat, 0, 0) == 5);
+    for(int i = 0; i < 64; i++){
+        mat.cells[i] = i;
+    }
+
+    //nested for loops with outer loop being columns and the 
+    //inner loop being rows.
+    int index = 0;
+    for(int i = 0; i < 8; i++){
+        for(int j = 0; j < 8; j++){
+            CHECK_TRUE(*DU16_CellIndex(&mat, j, i) == index);
+            index += 1;
+        }
+    }
 
     DU16_FreeMatrix(&mat);
 }
