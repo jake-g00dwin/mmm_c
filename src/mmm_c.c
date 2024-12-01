@@ -5,15 +5,11 @@
 
 U16_DMAT DU16_New(uint16_t rows, uint16_t cols) {
   U16_DMAT mat = {rows, cols, NULL, false};
-
   return mat;
 }
 
 U16_DMAT DU16_NewZeros(uint16_t rows, uint16_t cols) {
-  U16_DMAT mat;
-  mat.rows = rows;
-  mat.cols = cols;
-  mat.cells = NULL;
+  U16_DMAT mat = DU16_New(rows, cols);
 
   if (DU16_AllocateMemory(&mat) != Ok) {
     mat.is_allocated = false;
