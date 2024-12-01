@@ -1,4 +1,4 @@
-# MMM_C (Miniature Matrix Math Library for in C)
+# MMM_C (Miniature Matrix Math Library in C)
 
 ## Description
 
