@@ -3,19 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-U16_DMAT DU16_New(uint16_t rows, uint16_t cols) {
+U16_DMAT DU16_New(unsigned int rows, unsigned int cols) {
   U16_DMAT mat = {rows, cols, NULL, false};
-  return mat;
-}
-
-U16_DMAT DU16_NewZeros(uint16_t rows, uint16_t cols) {
-  U16_DMAT mat = DU16_New(rows, cols);
-
-  if (DU16_AllocateMemory(&mat) != Ok) {
-    mat.is_allocated = false;
-  } else {
-    mat.is_allocated = true;
-  }
   return mat;
 }
 
@@ -43,5 +32,18 @@ Result DU16_FreeMatrix(U16_DMAT *mat) {
   free(mat->cells);
   mat->cells = NULL;
   mat->is_allocated = false;
+  return Ok;
+}
+
+Result DU16_SetAllTo(U16_DMAT *mat, uint16_t value) {
+  if (!mat->is_allocated) {
+    return Error;
+  }
+
+  unsigned int i;
+  for (i = 0; i < (mat->cols * mat->rows); i++) {
+    mat->cells[i] = value;
+  }
+
   return Ok;
 }
