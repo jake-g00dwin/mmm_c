@@ -81,7 +81,7 @@ Result DU16_MultiplyByNum(U16_DMAT *mat, uint16_t value) {
 
 Result DU16_MultiplyInPlace(U16_DMAT *mata, U16_DMAT *matb) { return Ok; }
 
-U16_DMAT DU16_MultiplyMatricies(U16_DMAT *mata, U16_DMAT *matb) {
+U16_DMAT DU16_DotProduct(U16_DMAT *mata, U16_DMAT *matb) {
   U16_DMAT mat_result = DU16_New(0, 0);
   return mat_result;
 }
