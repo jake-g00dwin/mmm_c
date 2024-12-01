@@ -128,3 +128,29 @@ TEST(mmm_c_test, DU16_SetAllToValuesSetsValues)
     DU16_FreeMatrix(&mat);
 }
 
+TEST(mmm_c_test, DU16_IndexingFailsOnOutOfBounds)
+{
+    U16_DMAT mat = DU16_New(8, 8);
+    CHECK_EQUAL(Ok, DU16_AllocateMemory(&mat));
+    DU16_SetAllTo(&mat, 0);
+
+    CHECK_EQUAL(NULL, DU16_CellIndex(&mat, 0, 8));
+    CHECK_EQUAL(NULL, DU16_CellIndex(&mat, 8, 0));
+
+    DU16_FreeMatrix(&mat);
+}
+
+TEST(mmm_c_test, DU16_IndexingSquareMatrixWorks)
+{
+    U16_DMAT mat = DU16_New(8, 8);
+    CHECK_EQUAL(Ok, DU16_AllocateMemory(&mat));
+   
+    DU16_SetAllTo(&mat, 0);
+
+    mat.cells[0] = 5;
+     
+    CHECK_TRUE(*DU16_CellIndex(&mat, 0, 0) == 5);
+
+    DU16_FreeMatrix(&mat);
+}
+
