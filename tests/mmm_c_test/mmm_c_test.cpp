@@ -190,3 +190,25 @@ TEST(mmm_c_test, DU16_MultiplyBySingleValueWorks)
 
     DU16_FreeMatrix(&mat);
 }
+
+TEST(mmm_c_test, DU16_DotProductOfMatAndVectorIsCorrect)
+{
+    FAIL("TEST not yet implimented!");
+
+    U16_DMAT mata = DU16_New(1, 3);
+    CHECK_EQUAL(Ok, DU16_AllocateMemory(&mata));
+    DU16_SetAllTo(&mata, 2);
+
+    U16_DMAT matb = DU16_New(3, 1);
+    CHECK_EQUAL(Ok, DU16_AllocateMemory(&matb));
+    DU16_SetAllTo(&matb, 4);
+
+    U16_DMAT mat_result = DU16_DotProduct(&mata, &matb);
+
+
+    DU16_FreeMatrix(&mata);
+    DU16_FreeMatrix(&matb);
+    DU16_FreeMatrix(&mat_result);
+}
+
+
