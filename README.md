@@ -50,6 +50,8 @@ echo "1" | ./otto.sh
 
 - [ ] Add dynamic matrix types.
 - [ ] Add static matrix types.
+- [ ] Add module for loading matx format files.
+- [ ] Add matrix file format to load matricies.
 
 ## License
 
