@@ -29,6 +29,10 @@ single step.
 This avoids dealing with having multiple allocation function calls for arrays.
 Another benefit is it simplifies freeing the memory after use.
 
+The columns are in order to start. So if you were to index directly into the 
+matrix you would find at the value of column_length + 1 you would be indexing
+the zeroth element of the second column or [1, 0].
+
 ## Applicaitons
 
 **TODO:** Add list of project links where used.
