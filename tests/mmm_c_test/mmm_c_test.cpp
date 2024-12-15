@@ -193,8 +193,6 @@ TEST(mmm_c_test, DU16_MultiplyBySingleValueWorks)
 
 TEST(mmm_c_test, DU16_DotProductOfMatAndVectorIsCorrect)
 {
-    FAIL("TEST not yet implimented!");
-
     U16_DMAT mata = DU16_New(1, 3);
     CHECK_EQUAL(Ok, DU16_AllocateMemory(&mata));
     DU16_SetAllTo(&mata, 2);
@@ -203,8 +201,39 @@ TEST(mmm_c_test, DU16_DotProductOfMatAndVectorIsCorrect)
     CHECK_EQUAL(Ok, DU16_AllocateMemory(&matb));
     DU16_SetAllTo(&matb, 4);
 
+    //Setup the conditions
+    for(int i = 1; i <= 6; i++){
+        mata.cells[i] = i;
+    }
+    for(int i = 7; i <= 12; i++){
+        matb.cells[i] = i;
+    }
+
     U16_DMAT mat_result = DU16_DotProduct(&mata, &matb);
 
+
+    //Test the conditions
+    
+    //Check the shape
+    CHECK_TRUE_TEXT(mat_result.is_allocated, "The matrix wasn't allocated!");
+    CHECK_TRUE_TEXT(mat_result.rows == 2, "Number of rows incorrect!");
+    CHECK_TRUE_TEXT(mat_result.cols == 2, "Number of columns incorrect!");
+
+
+    uint_fast16_t *ptr = NULL;
+
+    //All indecies are done via Row, Col
+    ptr = DU16_CellIndex(&mat_result, 0, 0);
+    CHECK_EQUAL(58, *ptr);
+
+    ptr = DU16_CellIndex(&mat_result, 0, 1);
+    CHECK_EQUAL(64, mat_result.cells[1]);
+    
+    ptr = DU16_CellIndex(&mat_result, 1, 0);
+    CHECK_EQUAL(139, mat_result.cells[2]);
+    
+    ptr = DU16_CellIndex(&mat_result, 1, 1);
+    CHECK_EQUAL(154, mat_result.cells[3]);
 
     DU16_FreeMatrix(&mata);
     DU16_FreeMatrix(&matb);
