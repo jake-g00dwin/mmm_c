@@ -193,11 +193,11 @@ TEST(mmm_c_test, DU16_MultiplyBySingleValueWorks)
 
 TEST(mmm_c_test, DU16_DotProductOfMatAndVectorIsCorrect)
 {
-    U16_DMAT mata = DU16_New(1, 3);
+    U16_DMAT mata = DU16_New(2, 3);
     CHECK_EQUAL(Ok, DU16_AllocateMemory(&mata));
     DU16_SetAllTo(&mata, 2);
 
-    U16_DMAT matb = DU16_New(3, 1);
+    U16_DMAT matb = DU16_New(3, 2);
     CHECK_EQUAL(Ok, DU16_AllocateMemory(&matb));
     DU16_SetAllTo(&matb, 4);
 
