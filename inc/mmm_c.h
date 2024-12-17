@@ -42,6 +42,8 @@ Result DU16_MultiplyByNum(U16_DMAT *mat, uint16_t value);
 Result DU16_MultiplyInPlace(U16_DMAT *mata, U16_DMAT *matb);
 U16_DMAT DU16_DotProduct(U16_DMAT *mata, U16_DMAT *matb);
 
+Result DU16_PrintMatrix(U16_DMAT *mat);
+
 uint_fast16_t *DU16_CellIndex(U16_DMAT *mat, unsigned int row, unsigned int col);
 
 #endif // MMMC_H
