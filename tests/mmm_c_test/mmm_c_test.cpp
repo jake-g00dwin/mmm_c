@@ -140,6 +140,19 @@ TEST(mmm_c_test, DU16_IndexingFailsOnOutOfBounds)
     DU16_FreeMatrix(&mat);
 }
 
+//Works but commented out to keep test output cleaner
+/*
+TEST(mmm_c_test, DU16_PrintWorksOnInitializedMatrix)
+{
+    U16_DMAT mata = DU16_New(2, 3);
+    CHECK_EQUAL(Ok, DU16_AllocateMemory(&mata));
+    DU16_SetAllTo(&mata, 0);
+
+    Result r = DU16_PrintMatrix(&mata);
+    CHECK_EQUAL_TEXT(Ok, r, "Failure to print matrix");
+}
+*/
+
 TEST(mmm_c_test, DU16_IndexingSquareMatrixWorks)
 {
     U16_DMAT mat = DU16_New(8, 8);
@@ -202,15 +215,25 @@ TEST(mmm_c_test, DU16_DotProductOfMatAndVectorIsCorrect)
     DU16_SetAllTo(&matb, 4);
 
     //Setup the conditions
-    for(int i = 1; i <= 6; i++){
-        mata.cells[i] = i;
+    uint_fast16_t vala = 1;
+    for(int i = 0; i < mata.rows; i++){
+        for(int j = 0; j < mata.cols; j++){
+            uint_fast16_t *cella = DU16_CellIndex(&mata, i, j);
+            *cella = vala;
+            vala += 1;
+        }
     }
-    for(int i = 7; i <= 12; i++){
-        matb.cells[i] = i;
+
+    uint_fast16_t valb = 7;
+    for(int i = 0; i < matb.rows; i++){
+        for(int j = 0; j < matb.cols; j++){
+            uint_fast16_t *cellb = DU16_CellIndex(&matb, i, j);
+            *cellb = valb;
+            valb += 1;
+        }
     }
 
     U16_DMAT mat_result = DU16_DotProduct(&mata, &matb);
-
 
     //Test the conditions
     
@@ -227,17 +250,16 @@ TEST(mmm_c_test, DU16_DotProductOfMatAndVectorIsCorrect)
     CHECK_EQUAL(58, *ptr);
 
     ptr = DU16_CellIndex(&mat_result, 0, 1);
-    CHECK_EQUAL(64, mat_result.cells[1]);
+    CHECK_EQUAL(64, *ptr);
     
     ptr = DU16_CellIndex(&mat_result, 1, 0);
-    CHECK_EQUAL(139, mat_result.cells[2]);
+    CHECK_EQUAL(139, *ptr);
     
     ptr = DU16_CellIndex(&mat_result, 1, 1);
-    CHECK_EQUAL(154, mat_result.cells[3]);
+    CHECK_EQUAL(154, *ptr);
 
     DU16_FreeMatrix(&mata);
     DU16_FreeMatrix(&matb);
     DU16_FreeMatrix(&mat_result);
 }
-
 
