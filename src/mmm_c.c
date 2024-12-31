@@ -4,8 +4,7 @@
 
 Result DU16_PrintMatrix(U16_DMAT *mat) {
   printf("matrix: shape(r, c):");
-  printf("%lu, %lu\n", mat->rows, mat->cols);
-
+  printf("%u, %u\n", (uint16_t)mat->rows, (uint16_t)mat->cols);
   for (int i = 0; i < mat->cols; i++) {
     printf("Column[%d]:\n[\n", i);
     for (int j = 0; j < mat->rows; j++) {
@@ -15,7 +14,7 @@ Result DU16_PrintMatrix(U16_DMAT *mat) {
         return Error;
       }
 
-      printf("%lu,\n", *cptr);
+      printf("%u,\n", (uint16_t)*cptr);
     }
     printf("]\n");
   }
