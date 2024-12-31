@@ -52,3 +52,9 @@ TEST(activation_funcs, SigmoidReturnsInValidRange)
     CHECK_TRUE(result < 0.7);
     CHECK_TRUE(result > 0.5);
 }
+
+
+TEST(activation_funcs, SoftMaxBinaryClassesWorks)
+{
+    FAIL_TEST("Not yet implimented!\n");
+}
